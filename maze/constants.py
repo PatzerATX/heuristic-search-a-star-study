@@ -1,0 +1,2 @@
+HEIGHT = 51
+WIDTH = 51
