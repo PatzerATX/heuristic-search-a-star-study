@@ -123,3 +123,7 @@ This project demonstrates that while A* guarantees optimality, algorithmic varia
 
 ## Keywords
 A*, heuristic search, pathfinding, adaptive search, gridworld, artificial intelligence
+
+## Game Update
+
+A game function was added to the project where the user and an AI agent race to a finishing point. Game functions include maze walls, visibility of cells revealed as each actor progresses, and action cells that contain various effects that hurt or harm each agent.
