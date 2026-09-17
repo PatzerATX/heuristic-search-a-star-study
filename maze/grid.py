@@ -4,28 +4,34 @@ from .constants import HEIGHT, WIDTH
 
 
 def random_grid():
-    grid = []
-    for r in range(HEIGHT):
-        row = []
-        for c in range(WIDTH):
-            if random.random() < 0.3:
-                row.append(1)
-            else:
-                row.append(0)
-        grid.append(row)
+    from .pathfinding import astar
+
     while True:
-        sr = random.randint(0, HEIGHT - 1)
-        sc = random.randint(0, WIDTH - 1)
-        if grid[sr][sc] == 0:
-            start = (sr, sc)
-            break
-    while True:
-        fr = random.randint(0, HEIGHT - 1)
-        fc = random.randint(0, WIDTH - 1)
-        if grid[fr][fc] == 0 and (fr, fc) != (sr, sc):
-            goal = (fr, fc)
-            break
-    return grid, start, goal
+        grid = []
+        for r in range(HEIGHT):
+            row = []
+            for c in range(WIDTH):
+                if random.random() < 0.3:
+                    row.append(1)
+                else:
+                    row.append(0)
+            grid.append(row)
+        while True:
+            sr = random.randint(0, HEIGHT - 1)
+            sc = random.randint(0, WIDTH - 1)
+            if grid[sr][sc] == 0:
+                start = (sr, sc)
+                break
+        while True:
+            fr = random.randint(0, HEIGHT - 1)
+            fc = random.randint(0, WIDTH - 1)
+            if grid[fr][fc] == 0 and (fr, fc) != (sr, sc):
+                goal = (fr, fc)
+                break
+
+        path, _expanded, _count = astar(grid, start, goal, -1)
+        if path:
+            return grid, start, goal
 
 
 def empty_grid():
